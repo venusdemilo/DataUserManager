@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit KeyWord{% endblock %}
+
+{% block body %}
+    <h1>Edit KeyWord</h1>
+
+    {{ include('key_word/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('key_word_index') }}">back to list</a>
+
+    {{ include('key_word/_delete_form.html.twig') }}
+{% endblock %}

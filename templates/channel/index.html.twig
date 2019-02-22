@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Channel index{% endblock %}
+
+{% block body %}
+    <h1>Channel index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Title</th>
+                <th>UpdatedAt</th>
+                <th>CreatedAt</th>
+                <th>ErrorNb</th>
+                <th>CallNb</th>
+                <th>Active</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for channel in channels %}
+            <tr>
+                <td>{{ channel.id }}</td>
+                <td>{{ channel.url }}</td>
+                <td>{{ channel.title }}</td>
+                <td>{{ channel.updatedAt ? channel.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ channel.createdAt ? channel.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ channel.errorNb }}</td>
+                <td>{{ channel.callNb }}</td>
+                <td>{{ channel.active ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('channel_show', {'id': channel.id}) }}">show</a>
+                    <a href="{{ path('channel_edit', {'id': channel.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('channel_new') }}">Create new</a>
+{% endblock %}

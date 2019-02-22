@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RssController!{% endblock %}
+
+{% block body %}
+
+Message : {{ mes }}<br />
+Pattern : {{ str }}<br />
+<ul>
+{% for rep in replist %}
+  <li>{{ rep }}</li>
+{% endfor %}
+</ul>
+
+
+<div class="container">
+<h4>Channel info</h4>
+{% for rss in rss_list.channel %}
+
+<h5>{{ rss.title|default('Variable non définie') }}</h5>
+<ul>
+<li>{{ rss.description|default('Variable non définie')}}</li>
+<li> <a href="{{ rss.link }}">lien</a></li>
+<li>{{ rss.pubDate|default('Variable non définie') }}</li>
+<li>{{ rss.generator|default('Variable non définie') }}</li>
+
+
+
+</ul>
+
+{% endfor %}
+<h4>Item info</h4>
+{% for rss in rss_list.channel.item %}
+
+<h5>{{ rss.title|default('Variable non définie') }}</h5>
+<ul>
+<li>{{ rss.description|default('Variable non définie')}}</li>
+<li> <a href="{{ rss.link }}">lien</a></li>
+<li>{{ rss.pubDate|default('Variable non définie') }}</li>
+<li>{{ rss.guid|default('Variable non définie')}}</li>
+
+
+</ul>
+
+{% endfor %}
+<div class="container">
+{% endblock %}

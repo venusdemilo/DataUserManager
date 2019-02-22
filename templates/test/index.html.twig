@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+<div class="container">
+  Type de flux : {{ feedType }}<br />
+
+
+  Titre : {{ feed.feedTitle }}<br/>
+  Date : {{feed.feedDate}}<br />
+  URI : {{ feed.feedUri}}<br/>
+  Auteur: {{ feed.feedAuthorName }}<br/>
+
+{#
+{% for a in arr %}
+<div>
+  <b>{{ a.title }}</b><br />
+  {{ a.description }}<br />
+  Auteur : {{ a.author }} ,lien : <a href="{{a.link}}">cliquez !</a><br />
+  Catégorie :{{ a.category}}<br />
+  Auteur :{{ a.author}}<br />
+  ID :{{a.guid}}<br />
+</div>
+{% endfor %}
+</div>
+#}
+{% endblock %}

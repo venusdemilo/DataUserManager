@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MatchController!{% endblock %}
+
+{% block body %}
+<ul>
+{% for item in itemList %}
+<li>{{item.get_title}}
+  <br>- {{item.get_feed.get_title}}
+  <br>- {{item.get_id}}
+  <br>- <a href="{{item.get_link}}"> link </a>
+
+</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

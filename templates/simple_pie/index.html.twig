@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SimplePieController!{% endblock %}
+
+{% block body %}
+
+{%for f in feedList %}
+<div class="container">
+{% for link in f.linkList %}
+{{ link.url }}<br />
+{% endfor %}
+  {% if f.error is empty  %}
+  <div>
+    {{ f.feed.get_title }}<br/>
+    {{ f.feed.get_description }}<br/>
+    {{ f.feed.get_favicon }}<br/>
+    Nombre d'items : {{ f.feed.get_item_quantity }}<br/>
+    Langage : {{ f.feed.get_language }}<br/>
+    Lien permanent : {{ f.feed.get_permalink }}<br/>
+    Type : {{ f.feed.get_type }}<br/>
+
+  </div>
+  <div>
+    <ul>
+    {% for item in f.feed.get_items %}
+    <li>{{ item.get_title }}
+
+    </li>
+    {% endfor %}
+  </ul>
+  </div>
+  {% else %}
+  <div>
+    {{ f.error|raw }}
+  </div>
+  {% endif %}
+  <br/>-----------------------------------<br/>
+{% endfor %}
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matching index{% endblock %}
+
+{% block body %}
+    <h1>Matching index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CreatedAt</th>
+                <th>ErrorNb</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for matching in matchings %}
+            <tr>
+                <td>{{ matching.id }}</td>
+                <td>{{ matching.createdAt ? matching.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ matching.errorNb }}</td>
+                <td>
+                    <a href="{{ path('matching_show', {'id': matching.id}) }}">show</a>
+                    <a href="{{ path('matching_edit', {'id': matching.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('matching_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}KeyWord index{% endblock %}
+
+{% block body %}
+    <h1>KeyWord index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CreatedAt</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for key_word in key_words %}
+            <tr>
+                <td>{{ key_word.id }}</td>
+                <td>{{ key_word.createdAt ? key_word.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ key_word.name }}</td>
+                <td>
+                    <a href="{{ path('key_word_show', {'id': key_word.id}) }}">show</a>
+                    <a href="{{ path('key_word_edit', {'id': key_word.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('key_word_new') }}">Create new</a>
+{% endblock %}

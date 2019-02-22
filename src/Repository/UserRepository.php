@@ -47,4 +47,23 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findOneByEmail($value): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    public function findOneByResetToken($value): ?User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.resetToken = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }
